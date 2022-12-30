@@ -1,11 +1,9 @@
 from abc import ABC, abstractmethod
-import os
 
 
-class BaseVocoder(ABC):
+class BaseVoc(ABC):
     """
+    Base Class vocoder
     """
-    def __init__(self, fpath):
-        self.fname = fpath
-        self.fname = os.basename(fpath)
-     
+    def __init__(self):
+        pass

@@ -1,0 +1,2 @@
+AVAILABLE_TEXT_EXT = ("txt")
+AVAILABLE_TEXT_AUDIO = ("mp3")

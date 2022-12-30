@@ -1,15 +1,26 @@
 from .base import BaseReader
+from lib.text import DocObj
 
 
 class TxtReader(BaseReader):
     """
     This class is responsible for parsing pdf files
+
+    Parameters
+    ----------
+    fpath: str
+        Path to the files to be read
     """
     def __init__(self, fpath):
-        super(self, TxtReader).__init__(fpath)
+        super(TxtReader, self).__init__(fpath)
     
     def read_all(self):
-        pass
+        """ Reading the entire file"""
+        with open(self.fpath, 'r') as f:
+            raw_text = f.read() 
+            raw_text.replace("\n", "")
 
-    def get_page_number(self):
-        pass
+        doc = DocObj()
+        doc.insert_page(raw_text)
+
+        return doc

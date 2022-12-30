@@ -1,6 +1,3 @@
-from .gtts_voc import GTTSVoc
-
-
 def get_vocoder(
         voc_name: str,
         lang: str
@@ -24,6 +21,7 @@ def get_vocoder(
 
     # Init vocoder
     if voc_name == "gtts": 
+        from .gtts_voc import GTTSVoc
         return GTTSVoc(lang)
     else:
         raise ValueError(f" The vocoder with name {voc_name} is not supported")

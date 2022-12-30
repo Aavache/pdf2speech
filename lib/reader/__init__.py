@@ -1,6 +1,4 @@
 import os
-from .pdf_reader import PdfReader
-from .txt_reader import TxtReader
 
 
 def get_reader(fpath: str):
@@ -17,18 +15,20 @@ def get_reader(fpath: str):
     obj
         reader object initialized
     """
-    fname = os.basename(fpath)
+    fname = os.path.basename(fpath)
 
     # Getting the extensions
     fname_arr = fname.split(".")
     assert len(fname_arr) == 2, f"The file name {fname} must "\
             "have an extension"
 
-    ext = fname[1].lower()
+    ext = fname_arr[1].lower()
 
     if ext == "pdf": 
+        from .pdf_reader import PdfReader
         return PdfReader(fpath)
     elif ext == "txt":
+        from .txt_reader import TxtReader
         return TxtReader(fpath)
     else:
         raise ValueError(f" Extension {ext} is not supported")

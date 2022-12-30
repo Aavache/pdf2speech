@@ -4,15 +4,13 @@ import os
 
 class BaseReader(ABC):
     """
+    Abstract class for reading documents
     """
     def __init__(self, fpath):
-        self.fname = fpath
-        self.fname = os.basename(fpath)
-    
-    @abstractmethod
-    def read_all(self):
-        pass
+        self.fpath = fpath
+        self.fname = os.path.basename(fpath)
 
     @abstractmethod
-    def get_page_number(self):
+    def read_all(self):
+        """ Reading the entire document"""
         pass

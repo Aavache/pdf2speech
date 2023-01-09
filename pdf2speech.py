@@ -3,6 +3,7 @@ import time
 import argparse
 from lib.reader import get_reader
 from lib.vocoder import get_vocoder
+from lib.utils.constants import MAX_WORDS
 
 OUTPUT_PATH = "./outputs/"
 
@@ -29,22 +30,20 @@ def main(args):
     doc = reader.read_all()
 
     # Generating the audio and export
-    vocoder = get_vocoder(args.voc, args.lang)
-    out_fpath = vocoder(doc, outfpath)
+    vocoder = get_vocoder(args.voc, args.lang, args.max_words)
+    vocoder(doc, outfpath)
 
-    print(f" The audio cue was succesfully generated at {out_fpath}")
+    print(f" The audio track/s were succesfully generated at {args.outdir}")
 
 
 if __name__ == "__main__":
     # Defining the arguments to module
     parser = argparse.ArgumentParser()
-    parser.add_argument("-f", "--fpath", type=str, required=True,
-                    help='File to be read.')
-    parser.add_argument("-o", "--outdir", type=str, default=OUTPUT_PATH, 
-                    required=False, help='Directory to store audio file')
-    parser.add_argument("--lang", type=str, default='en', help='Language.')
+    parser.add_argument("fpath", type=str, help='File to be read.')
+    parser.add_argument("outdir", type=str, help='Directory to store audio file')
+    parser.add_argument("-l", "--lang", type=str, default='en', help='Language.')
     parser.add_argument("--voc", type=str, default='gtts', help='Vocoder name.')
+    parser.add_argument("--max-words", type=int, default=MAX_WORDS, help='Number of words per track')
     args, unknowns = parser.parse_known_args()
-
 
     main(args)

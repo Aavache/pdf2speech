@@ -6,6 +6,10 @@ class DocObj(object):
     def __init__(self):
         self.doc = []
 
+    def __len__(self):
+        """Get the number of pages in the document"""
+        return len(self.doc)
+
     def insert_page(self, page_text):
         """ Insert a page in the book"""
         self.doc.append(page_text)

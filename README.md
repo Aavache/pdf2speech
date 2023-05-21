@@ -4,6 +4,12 @@ Reading PDF files and converting them to audible cues. Feed your favorite books 
 
 ## Installation 
 
+```sh
+git clone 
+cd pdf2speech
+pip install .
+```
+
 ## How to use the tool.
 
 ## Acknowledgement

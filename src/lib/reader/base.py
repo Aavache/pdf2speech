@@ -1,16 +1,11 @@
 from abc import ABC, abstractmethod
-import os
 
 
 class BaseReader(ABC):
-    """
-    Abstract class for reading documents
-    """
-    def __init__(self, fpath):
-        self.fpath = fpath
-        self.fname = os.path.basename(fpath)
+    def __init__(self, *args, **kwargs):
+        pass
 
     @abstractmethod
     def read_all(self):
-        """ Reading the entire document"""
-        pass
+        """Reading document."""
+        raise NotADirectoryError("This method must be implemented")
